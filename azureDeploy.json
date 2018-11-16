@@ -89,7 +89,7 @@
             "type": "securestring"
         },
         "rServicesEnabled": {
-            "type": "string"
+            "type": "string",
             "defaultValue": "false"
         },
         "dnsLabelPrefix": {
@@ -105,7 +105,7 @@
             "defaultValue": "bandeadmin"
         },
         "domainJoinOptions": {
-            "type": "int"
+            "type": "int",
             "defaultValue": 3
         },
         "domainPassword": {
