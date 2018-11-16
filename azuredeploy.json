@@ -32,7 +32,7 @@
         "location": "westeurope",
         "virtualMachineSize": "Standard_D2s_v3",
         "virtualNetworkName": "adVNET",
-        "networkInterfaceName": "[concat(variables('virtualMachineName'),'-NIC']",
+        "networkInterfaceName": "[concat(variables('virtualMachineName'),'-NIC')]",
         "diagnosticStorageAccountName": "vfenv1rgdiag860",
         "diagnosticStorageAccountId" : "/subscriptions/d9ac130f-66f2-419b-b018-1870e309a47a/resourceGroups/vfenv1_rg/providers/Microsoft.Storage/storageAccounts/vfenv1rgdiag860",
         "subnetName": "adSubnet",
