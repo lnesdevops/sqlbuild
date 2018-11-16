@@ -47,7 +47,7 @@
         "sqlAutopatchingStartHour": "2",
         "sqlAutopatchingWindowDuration": "60",
         "rServicesEnabled": "false",
-        "dnsLabelPrefix": "[(parameters('virtualMachineName')]",
+        "dnsLabelPrefix": "(parameters('virtualMachineName')",
         "domainToJoin": "lnvfdev.local",
         "domainJoinOptions": 3
     },
