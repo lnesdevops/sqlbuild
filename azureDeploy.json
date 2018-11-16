@@ -3,85 +3,110 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "westeurope"
         },
         "virtualMachineName": {
             "type": "string"
         },
         "virtualMachineSize": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_D2s_v3"
         },
         "adminUsername": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "bandeadmin"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "adVNET"
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "changeme-NIC"
         },
         "adminPassword": {
             "type": "securestring"
         },
         "diagnosticsStorageAccountName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "vfenv1rgdiag860"
         },
         "diagnosticsStorageAccountId": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "/subscriptions/d9ac130f-66f2-419b-b018-1870e309a47a/resourceGroups/vfenv1_rg/providers/Microsoft.Storage/storageAccounts/vfenv1rgdiag860"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "adSubnet"
+
         },
         "sqlConnectivityType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Private"
         },
         "sqlPortNumber": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1433
         },
         "sqlStorageDisksCount": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 1
         },
         "sqlStorageWorkloadType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "GENERAL"
         },
         "sqlStorageDisksConfigurationType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "NEW"
         },
         "sqlStorageStartingDeviceId": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 2
         },
         "sqlStorageDeploymentToken": {
-            "type": "int"
+            "type": "int",
+            "defaultValue": 91868
         },
         "sqlAutopatchingDayOfWeek": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Sunday"
         },
         "sqlAutopatchingStartHour": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "2"
         },
         "sqlAutopatchingWindowDuration": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "60"
         },
         "sqlAuthenticationLogin": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "sqladmin"
         },
         "sqlAuthenticationPassword": {
             "type": "securestring"
         },
         "rServicesEnabled": {
             "type": "string"
+            "defaultValue": "false"
         },
         "dnsLabelPrefix": {
-            "type": "string"
+            "type": "string",
+            "defaultvalue": "changeme"
         },
         "domainToJoin": {
-            "type": "string"
+            "type": "string",
+            "defaultvalue": "lnvfdev.local"
         },
         "domainUsername": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "bandeadmin"
         },
         "domainJoinOptions": {
             "type": "int"
+            "defaultValue": 3
         },
         "domainPassword": {
             "type": "securestring"
