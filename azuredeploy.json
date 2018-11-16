@@ -26,7 +26,7 @@
     },
     "variables": {
         "vnetId": "[resourceId('vfEnv1_rg','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "diagnosticsExtensionName": "IaaSDiagnostics",
         "ouPath": "OU=Servers,OU=Compute,DC=lnvfdev,DC=local",
         "location": "westeurope",
