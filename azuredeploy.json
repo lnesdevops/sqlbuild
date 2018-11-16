@@ -493,7 +493,7 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "Name": "[parameters('domainToJoin')]",
-                "OUPath": "[variable('ouPath')]",
+                "OUPath": "[variables('ouPath')]",
                 "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
                 "Restart": "true",
                 "Options": "[parameters('domainJoinOptions')]"
