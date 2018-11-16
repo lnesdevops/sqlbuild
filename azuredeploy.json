@@ -115,7 +115,8 @@
     "variables": {
         "vnetId": "[resourceId('vfEnv1_rg','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
-        "diagnosticsExtensionName": "IaaSDiagnostics"
+        "diagnosticsExtensionName": "IaaSDiagnostics",
+        "ouPath": "OU=Servers,OU=Compute,DC=lnvfdev,DC=local"
     },
     "resources": [
         {
@@ -492,7 +493,7 @@
               "autoUpgradeMinorVersion": true,
               "settings": {
                 "Name": "[parameters('domainToJoin')]",
-                "OUPath": "[parameters('ouPath')]",
+                "OUPath": "[variable('ouPath')]",
                 "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
                 "Restart": "true",
                 "Options": "[parameters('domainJoinOptions')]"
