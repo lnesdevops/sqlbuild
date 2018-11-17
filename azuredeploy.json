@@ -34,7 +34,7 @@
         "virtualNetworkName": "adVNET",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'),'-NIC')]",
         "diagnosticsStorageAccountName": "vfenv1rgdiag860",
-        "diagnosticsStorageAccountId" : "/subscriptions/d9ac130f-66f2-419b-b018-1870e309a47a/resourceGroups/vfenv1_rg/providers/Microsoft.Storage/storageAccounts/vfenv1rgdiag860",
+        "diagnosticsStorageAccountId" : "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
         "subnetName": "adSubnet",
         "sqlConnectivityType": "Private",
         "sqlPortNumber": 1433,
@@ -49,7 +49,10 @@
         "rServicesEnabled": "false",
         "dnsLabelPrefix": "[parameters('virtualMachineName')]",
         "domainToJoin": "lnvfdev.local",
-        "domainJoinOptions": 3
+        "domainJoinOptions": 3,
+        "StandardAppsURL": "https://raw.githubusercontent.com/lnesdevops/sqlbuild/master/standardtools.ps1",
+        "StandardAppsScriptFolder":".",
+        "StandardAppsScriptFileName": "standardtools.ps1"
     },
     "resources": [
         {
@@ -454,6 +457,29 @@
                         }
                     }
                 ]
+            }
+        },                {
+            "name": "InstallStandardApps",
+            "type": "extensions",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2017-12-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
+            ],
+            "tags": {
+                "displayName": "Install Standard Applications"
+            },
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.4",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                        "[variables('StandardAppsURL')]"
+                    ],
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('StandardAppsScriptFolder'), '/', variables('StandardAppsScriptFileName'))]"
+                }
             }
         }
     ],
