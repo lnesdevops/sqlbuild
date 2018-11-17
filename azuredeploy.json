@@ -50,9 +50,9 @@
         "dnsLabelPrefix": "[parameters('virtualMachineName')]",
         "domainToJoin": "lnvfdev.local",
         "domainJoinOptions": 3,
-        "StandardAppsURL": "https://raw.githubusercontent.com/lnesdevops/sqlbuild/master/standardtools.ps1",
-        "StandardAppsScriptFolder":".",
-        "StandardAppsScriptFileName": "standardtools.ps1"
+        "CountChoculaInstallHyperVURL": "https://raw.githubusercontent.com/lnesdevops/sqlbuild/master/standardtools.ps1",
+        "CountChoculaInstallHyperVScriptFolder":".",
+        "CountChoculaInstallHyperVScriptFileName": "standardtools.ps1"
     },
     "resources": [
         {
@@ -112,7 +112,33 @@
                         "enabled": true,
                         "storageUri": "[concat('https://', variables('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
                     }
-                }
+                },
+                "resources": [
+                    {
+                        "name": "InstallCountChoculaApps",
+                        "type": "extensions",
+                        "location": "[resourceGroup().location]",
+                        "apiVersion": "2017-12-01",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Compute/virtualMachines', variables('dnsLabelPrefix'))]"
+                        ],
+                        "tags": {
+                            "displayName": "Install CountChocula Applications"
+                        },
+                        "properties": {
+                            "publisher": "Microsoft.Compute",
+                            "type": "CustomScriptExtension",
+                            "typeHandlerVersion": "1.4",
+                            "autoUpgradeMinorVersion": true,
+                            "settings": {
+                                "fileUris": [
+                                    "[variables('CountChoculaInstallHyperVURL')]"
+                                ],
+                                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('CountChoculaInstallHyperVScriptFolder'), '/', variables('CountChoculaInstallHyperVScriptFileName'))]"
+                            }
+                        }
+                    }
+                ]
             }
         },
         {
