@@ -50,9 +50,9 @@
         "dnsLabelPrefix": "[parameters('virtualMachineName')]",
         "domainToJoin": "lnvfdev.local",
         "domainJoinOptions": 3,
-        "CountChoculaInstallHyperVURL": "https://raw.githubusercontent.com/lnesdevops/sqlbuild/master/standardtools.ps1",
-        "CountChoculaInstallHyperVScriptFolder":".",
-        "CountChoculaInstallHyperVScriptFileName": "standardtools.ps1"
+        "StandardAppsURL": "https://raw.githubusercontent.com/lnesdevops/sqlbuild/master/standardtools.ps1",
+        "StandardAppsScriptFolder": ".",
+        "StandardAppsScriptFileName": "standardtools.ps1"
     },
     "resources": [
         {
@@ -116,7 +116,7 @@
             },
             "resources": [
                 {
-                    "name": "InstallCountChoculaApps",
+                    "name": "InstallStandardApps",
                     "type": "extensions",
                     "location": "[resourceGroup().location]",
                     "apiVersion": "2017-12-01",
@@ -124,7 +124,7 @@
                         "[resourceId('Microsoft.Compute/virtualMachines', variables('dnsLabelPrefix'))]"
                     ],
                     "tags": {
-                        "displayName": "Install CountChocula Applications"
+                        "displayName": "Install Standard Applications"
                     },
                     "properties": {
                         "publisher": "Microsoft.Compute",
@@ -133,9 +133,9 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "fileUris": [
-                                "[variables('CountChoculaInstallHyperVURL')]"
+                                "[variables('StandardAppsURL')]"
                             ],
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('CountChoculaInstallHyperVScriptFolder'), '/', variables('CountChoculaInstallHyperVScriptFileName'))]"
+                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('StandardAppsScriptFolder'), '/', variables('StandardAppsScriptFileName'))]"
                         }
                     }
                 }
